@@ -2,12 +2,11 @@
 # coding:utf-8
 # --------------------------
 # terminal command:
-# monkeyrunner D:\HanLeiDOC\HanLeiDOC\Python\SeleniumTest\monkeyrunner\bizlandingpage.py
+# monkeyrunner D:\HanLeiDOC\HanLeiDOC\Python\BizTest\monkeyrunner\bizlandingpage.py
 # --------------------------
 # Imports the monkeyrunner modules used by this program
 from com.android.monkeyrunner import MonkeyRunner, MonkeyDevice
 import time
-# from uiautomator import device as d
 
 POS_TAB_Cuisine = [200, 200]
 POS_TAB_Parent_Offspring = [500, 200]
@@ -29,10 +28,19 @@ POSs = [
         "column": {"entrance": [500, 1000]},  # 此处为排行榜show的poi
         "poi": {"to_poi_detail": [500, 1500]}
     },
+    # have city_global_column but from nuomi_home
+    {
+        "tab": {"pos": POS_TAB_Cuisine, "next_page": [1, 1]},
+        "ugc": {"entrance": [500, 500], "to_poi_detail": [500, 200]},
+        "ranking_list": {"entrance": [200, 850], "to_poi_detail": [500, 800]},
+        "column": {"entrance": [500, 1300]},  # 此处为FEED里的POI
+        "poi": {"to_poi_detail": [500, 1600]},  # 此处为Video Column
+        "extra": {"pos": [500, 1000]}
+    },
 ]
 
 
-class LandingPage:
+class TestLandingPage:
     TOUCH_TYPE = "DOWN_AND_UP"
     SLEEP_TIME = 3
     HEIGHT_TITLE_BAR = 189
@@ -64,6 +72,8 @@ class LandingPage:
     def init_home(self):
         self.device.drag((250, self.HEIGHT_TITLE_BAR),
                          (250, self.HEIGHT_COMPONENT), 0.1, 10)
+        self.device.drag((250, self.HEIGHT_COMPONENT),
+                         (250, self.HEIGHT_TITLE_BAR), 0.1, 10)
         time.sleep(5)
         print("-------init finished------")
     '''
@@ -75,15 +85,15 @@ class LandingPage:
     '''
         进入落地页
     '''
-    def tap_to_enter_landing_page(self):
+    def tap_to_landing_page(self):
         time.sleep(self.SLEEP_TIME)
         self.device.touch(500, 700, self.TOUCH_TYPE)
-        self.tear_down(msg="enter to landing page...", filename='landing_page')
+        self.tear_down(msg="tap to landing page...", filename='landing_page')
     '''
         滚动到下一屏
     '''
-    def next_page(self,  if_next_page):
-        if if_next_page == 0:
+    def next_page(self,  index):
+        if self.POS['tab']['next_page'][index] == 0:
             return
         self.device.drag((250, self.HEIGHT_COMPONENT),
                          (250, 0), 1, 10)
@@ -139,32 +149,50 @@ class LandingPage:
         self.tear_down(msg="tap to feed poi detail...", filename='poi')
         # 返回
         self.back("landing_page")
+    '''
 
+    '''
+    def tap_to_city_global_column(self):
+        if self.POS.get('extra') is not None:
+            self.touch(self.POS['extra']['pos'])
+            self.tear_down(msg="tap to column...", filename='column')
+            # 返回
+            # self.back("landing_page")
     '''
         test suite for Bizareatop_Landing_Page
     '''
     def start(self):
         self.init_home()
-        self.tap_to_enter_landing_page()
+        self.tap_to_landing_page()
         self.switch_tab()
 
         self.tap_to_ugc()
+        self.tap_to_city_global_column()
 
-        self.next_page(self.POS['tab']['next_page'][0])
+        self.next_page(0)
         self.tap_to_ranking_list()
         self.tap_to_column()
 
-        self.next_page(self.POS['tab']['next_page'][1])
+        self.next_page(1)
         self.tap_to_poi()
         self.back("nuomi_home")
         print("-------test finished------\n")
 
     def test(self):
-        # self.init_home()
-        # self.tap_to_enter_landing_page()
-        # self.switch_tab()
-        # self.next_page()
-        self.start()
+        self.init_home()
+        self.tap_to_landing_page()
+        self.switch_tab()
+        self.next_page(0)
+        self.next_page(1)
+        # self.next_page(1)
+
+
+def test_landing_page(device):
+    # TestLandingPage(device=device, positions=POSs[0]).start()
+    TestLandingPage(device=device, positions=POSs[2]).start()
+    TestLandingPage(device=device, positions=POSs[1]).start()  # 亲子
+    POSs[1]['tab']['pos'] = POS_TAB_Entertainment
+    TestLandingPage(device=device, positions=POSs[1]).start()  # 休闲娱乐
 
 
 def biz_test():
@@ -174,10 +202,8 @@ def biz_test():
         run_component = package + '/' + activity
         device.startActivity(component=run_component)
         print("start activity...")
-        LandingPage(device=device, positions=POSs[0]).test()
-        LandingPage(device=device, positions=POSs[1]).test()  # 亲子
-        POSs[1]['tab']['pos'] = POS_TAB_Entertainment
-        LandingPage(device=device, positions=POSs[1]).test()  # 休闲娱乐
+        test_landing_page(device)
+
 
 if __name__ == "__main__":
     biz_test()
