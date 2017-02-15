@@ -1,0 +1,16 @@
+1486646931852	geckodriver	INFO	Listening on 127.0.0.1:50359
+1486646933905	mozprofile::profile	INFO	Using profile path C:\Users\hanlei08\AppData\Local\Temp\rust_mozprofile.2nBbX1vli8YH
+1486646933911	geckodriver::marionette	INFO	Starting browser D:\Program Files (x86)\Mozilla Firefox\firefox.exe
+1486646933925	geckodriver::marionette	INFO	Connecting to Marionette on localhost:50369
+1486646935091	Marionette	INFO	Listening on port 50369
+[Child 7564] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+204759611706285486_1486552077918&_=1486552077926, line 1: TypeError: jQuery110204759611706285486_1486552077918 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=web&json=1&p=3&sid=1458_21099_17001_22036_22025&req=2&csor=3&pwd=we&cb=jQuery110204759611706285486_1486552077918&_=1486552077922, line 1: TypeError: jQuery110204759611706285486_1486552077918 is not aJavaScript JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=webdrive&json=1&p=3&sid=1458_21099_17001_22036_22025&req=2&csor=8&pwd=webdriv&cb=jQuery110204759611706285486_1486552077918&_=1486552077927, line 1: TypeError: jQuery110204759611706285486_148655207791JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=fir&json=1&p=3&sid=1463_21122_22035_22024_20928&req=2&csor=3&pwd=fi&cb=jQuery1102022568561098091688_1486552077911&_=1486552077915, line 1: TypeError: jQuery1102022568561098091688_1486552077911 is not a function
+[Child 10008] WARNING: pipe error: 232: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/chromium/src/chrome/common/ipc_channel_win.cc, line 513
+[Child 10008] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+or: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=webdr&json=1&p=3&sid=1458_21099_17001_22036_22025&req=2&csor=5&pwd=webd&cb=jQuery110204759611706285486_1486552077918&_=1486552077924, line 1: TypeError: jQuery110204759611706285486_1486552077918 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=webdri&json=1&p=3&sid=1458_21099_17001_22036_22025&req=2&csor=6&pwd=webdr&cb=jQuery110204759611706285486_1486552077918&_=1486552077925, line 1: TypeError: jQuery110204759611706285486_1486552077918 is not a function
+[Child 9856] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
+078_21942_17001_22036_22026_20928&req=2&csor=8&pwd=webdriv&cb=jQuery110205106596766550087_1486551936946&_=1486551936955, line 1: TypeError: jQuery110205106596766550087_1486551936946 is not a function
+JavaScript error: https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=webdri&json=1&p=3&sid=1457_21078_21942_17001_22036_22026_20928&req=2&csor=6&pwd=webdr&cb=jQuery110205106596766550087_1486551936946&_=1486551936953, line 1: TypeError: jQuery110205106596766550087_1486551936946 is not a function
+[Child 8940] ###!!! ABORT: Aborting on channel error.: file c:/builds/moz2_slave/m-rel-w32-00000000000000000000/build/src/ipc/glue/MessageChannel.cpp, line 2056
