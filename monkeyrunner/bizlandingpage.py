@@ -72,8 +72,8 @@ class TestLandingPage:
     def init_home(self):
         self.device.drag((250, self.HEIGHT_TITLE_BAR),
                          (250, self.HEIGHT_COMPONENT), 0.1, 10)
-        self.device.drag((250, self.HEIGHT_COMPONENT),
-                         (250, self.HEIGHT_TITLE_BAR), 0.1, 10)
+        # self.device.drag((250, self.HEIGHT_COMPONENT),
+        #                  (250, self.HEIGHT_TITLE_BAR), 0.1, 10)
         time.sleep(5)
         print("-------init finished------")
     '''
@@ -153,7 +153,7 @@ class TestLandingPage:
 
     '''
     def tap_to_city_global_column(self):
-        if self.POS.get('extra') is not None:
+        if self.POS.get('extra') is not 'None':
             self.touch(self.POS['extra']['pos'])
             self.tear_down(msg="tap to column...", filename='column')
             # 返回
